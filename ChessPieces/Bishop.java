@@ -39,84 +39,77 @@ public class Bishop extends Piece{
         //     }
         // }
 
-        int right_down = 1;
+        int counter = 1;
         boolean right_down_free = true;
-        int right_up = 1;
         boolean right_up_free = true;
-        int left_down = 1;
         boolean left_down_free = true;
-        int left_up = 1;
         boolean left_up_free = true;
 
         while(!exitLoop){
 
             // Right Up Direction
-            if (xCoordinate + right_down < 8 && right_down_free){
-                if (yCoordinate + right_down < 8) {
-                    if ( ! blocks[xCoordinate + right_down][yCoordinate + right_down].getTenant().contains(pieceColor)){
-                        xPossibleMoves[index] = xCoordinate + right_down;
-                        yPossibleMoves[index] = yCoordinate + right_down;
+            if (xCoordinate + counter < 8 && right_down_free){
+                if (yCoordinate + counter < 8) {
+                    if ( ! blocks[xCoordinate + counter][yCoordinate + counter].getTenant().contains(pieceColor)){
+                        xPossibleMoves[index] = xCoordinate + counter;
+                        yPossibleMoves[index] = yCoordinate + counter;
                         System.out.println("right down (x+var) (y+var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+right_down);
+                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
                     }else {
                         right_down_free = false;
                     }
                 }
-                right_down++;
             }
             // Left Up
-            if (xCoordinate + right_up < 8 && right_up_free){
-                if (yCoordinate - right_up >= 0) {
-                    if ( ! blocks[xCoordinate + right_up][yCoordinate - right_up].getTenant().contains(pieceColor)){
-                        xPossibleMoves[index] = xCoordinate + right_up;
-                        yPossibleMoves[index] = yCoordinate - right_up;
+            if (xCoordinate + counter < 8 && right_up_free){
+                if (yCoordinate - counter >= 0) {
+                    if ( ! blocks[xCoordinate + counter][yCoordinate - counter].getTenant().contains(pieceColor)){
+                        xPossibleMoves[index] = xCoordinate + counter;
+                        yPossibleMoves[index] = yCoordinate - counter;
                         System.out.println("right up (x+var) (y-var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+right_up);
+                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
                     }else {
                         right_up_free = false;
                     }
                 }
-                right_up++;
             }
             // Left Down
-            if (xCoordinate - left_down >= 0 && left_down_free){
-                if (yCoordinate + left_down < 8) {
-                    if ( ! blocks[xCoordinate - left_down][yCoordinate + left_down].getTenant().contains(pieceColor)){
-                        xPossibleMoves[index] = xCoordinate - left_down;
-                        yPossibleMoves[index] = yCoordinate + left_down;
+            if (xCoordinate - counter >= 0 && left_down_free){
+                if (yCoordinate + counter < 8) {
+                    if ( ! blocks[xCoordinate - counter][yCoordinate + counter].getTenant().contains(pieceColor)){
+                        xPossibleMoves[index] = xCoordinate - counter;
+                        yPossibleMoves[index] = yCoordinate + counter;
                         System.out.println("left down (x-var) (y+var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+left_down);
+                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
                     }else {
                         left_down_free = false;
                     }
                 }
-                left_down++;
             }
             // Left up
-            if (xCoordinate - left_up >= 0 && left_up_free){
-                if (yCoordinate - left_up >= 0) {
-                    if ( ! blocks[xCoordinate - left_up][yCoordinate - left_up].getTenant().contains(pieceColor)){
-                        xPossibleMoves[index] = xCoordinate - left_up;
-                        yPossibleMoves[index] = yCoordinate - left_up;
+            if (xCoordinate - counter >= 0 && left_up_free){
+                if (yCoordinate - counter >= 0) {
+                    if ( ! blocks[xCoordinate - counter][yCoordinate - counter].getTenant().contains(pieceColor)){
+                        xPossibleMoves[index] = xCoordinate - counter;
+                        yPossibleMoves[index] = yCoordinate - counter;
                         System.out.println("left up (x-var) (y-var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+left_up);
+                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
                     }else {
                         left_up_free = false;
                     }
                 }
-                left_up++;
             }
 
+            counter++;
             loopControl++;
             if (loopControl > 16)
                 exitLoop = true;
             
         }
-        System.out.println("exitted loop");
 
     }
 }
