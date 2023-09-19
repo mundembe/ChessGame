@@ -20,7 +20,6 @@ public class Bishop extends Piece{
         int index = 0;
         boolean exitLoop = false;
         int loopControl = 0;
-        System.out.println("ActionProcessor called in Bishop.");
 
         // for(int i = -7; i < 8; i++){
         //     if(xCoordinate + i >= 0 && xCoordinate + i < 8){
@@ -59,11 +58,8 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate + counter][yCoordinate + counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate + counter;
                         yPossibleMoves[index] = yCoordinate + counter;
-                        System.out.println("--------------------");
-                        System.out.println("right down (x+var) (y+var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
-                        System.out.println("--------------------");
                         index++;
+                        // Forcing diagonal to be blocked after an enemy is encountered
                         if (blocks[xCoordinate + counter][yCoordinate + counter].getTenant().contains(enemy))
                             right_down_free = false;
                     }else {
@@ -77,9 +73,6 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate + counter][yCoordinate - counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate + counter;
                         yPossibleMoves[index] = yCoordinate - counter;
-                        System.out.println("Left down (x+var) (y-var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
-                        index++;
                         // Forcing diagonal to be blocked after an enemy is encountered
                         if (blocks[xCoordinate + counter][yCoordinate - counter].getTenant().contains(enemy))
                             left_down_free = false;
@@ -94,8 +87,6 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate - counter][yCoordinate + counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate - counter;
                         yPossibleMoves[index] = yCoordinate + counter;
-                        System.out.println("Right Up (x-var) (y+var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
                         if (blocks[xCoordinate - counter][yCoordinate + counter].getTenant().contains(enemy))
                             right_up_free = false;
@@ -110,8 +101,6 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate - counter][yCoordinate - counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate - counter;
                         yPossibleMoves[index] = yCoordinate - counter;
-                        System.out.println("left up (x-var) (y-var)");
-                        System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
                         if (blocks[xCoordinate - counter][yCoordinate - counter].getTenant().contains(enemy))
                             left_up_free = false;

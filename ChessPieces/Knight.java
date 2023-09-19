@@ -1,5 +1,9 @@
 package ChessPieces;
 
+import javax.swing.JButton;
+
+import chessgame.Square;
+
 public class Knight extends Piece{
     public String imagePathWhite = "images\\knight_white.png";
     public String imagePathBlack = "images\\knight_black.png";
@@ -12,4 +16,10 @@ public class Knight extends Piece{
         this.setXCoordinate(xCoordinate);
         this.setYCoordinate(yCoordinate);
     }
+
+    @Override
+    public void showPossibleMoves(Square[][] blocks){
+        
+    }
+
 }
