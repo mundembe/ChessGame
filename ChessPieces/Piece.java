@@ -23,30 +23,17 @@ public class Piece {
     public String getImagePath() { return this.imagePath; }
     public void setXCoordinate(int xCoordinate) { this.xCoordinate = xCoordinate; }
     public void setYCoordinate(int yCoordinate) { this.yCoordinate = yCoordinate; }
-    public int getxCoordinate() {
-        return xCoordinate;
-    }
-    public void setxCoordinate(int xCoordinate) {
-        this.xCoordinate = xCoordinate;
-    }
-    public int getyCoordinate() {
-        return yCoordinate;
-    }
-    public void setyCoordinate(int yCoordinate) {
-        this.yCoordinate = yCoordinate;
-    }
+    public int getxCoordinate() { return xCoordinate; }
+    public void setxCoordinate(int xCoordinate) { this.xCoordinate = xCoordinate; }
+    public int getyCoordinate() { return yCoordinate; }
+    public void setyCoordinate(int yCoordinate) { this.yCoordinate = yCoordinate; }
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
     public void setPieceType(String pieceType) { this.pieceType = pieceType; }
     public String getPieceType() { return this.pieceType; }
     public void setPieceColor(String pieceColor) { this.pieceColor = pieceColor; }
     public void setReadyForMove(boolean readyForMove) { this.readyForMove = readyForMove; }
-
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 
     public Piece(String description){
         this.description = description;
@@ -80,7 +67,6 @@ public class Piece {
     
     public void actionProcessor(Square[][] blocks){
         showPossibleMoves(blocks);
-        System.out.println("Button pressed");
         
     }
 

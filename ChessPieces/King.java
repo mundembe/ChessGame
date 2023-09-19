@@ -8,6 +8,7 @@ public class King extends Piece{
         super(description);
         if (pieceIsWhite) this.setImagePath(imagePathWhite);
         if (!pieceIsWhite) this.setImagePath(imagePathBlack);
+        this.pieceType = "king";
         this.setXCoordinate(xCoordinate);
         this.setYCoordinate(yCoordinate);
     }

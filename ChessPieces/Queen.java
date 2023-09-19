@@ -8,6 +8,7 @@ public class Queen extends Piece{
         super(description);
         if (pieceIsWhite) this.setImagePath(imagePathWhite);
         if (!pieceIsWhite) this.setImagePath(imagePathBlack);
+        this.pieceType = "queen";
         this.setXCoordinate(xCoordinate);
         this.setYCoordinate(yCoordinate);
     }

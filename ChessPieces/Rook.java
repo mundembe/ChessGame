@@ -8,6 +8,7 @@ public class Rook extends Piece{
         super(description);
         if (pieceIsWhite) this.setImagePath(imagePathWhite);
         if (!pieceIsWhite) this.setImagePath(imagePathBlack);
+        this.pieceType = "rook";
         this.setXCoordinate(xCoordinate);
         this.setYCoordinate(yCoordinate);
     }

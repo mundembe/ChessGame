@@ -181,7 +181,7 @@ public class Game {
                         // Display tenants
                         for (int k = 0; k < blocks.length; k++) {
                             for (int l = 0; l < blocks.length; l++) {
-                                blocks[k][l].setText("o="+k+"i="+l);
+                                blocks[k][l].setText("x="+k+"y="+l);
                             }
                         }
 
@@ -200,12 +200,27 @@ public class Game {
                             blocks[excitedPiece.getxCoordinate()][excitedPiece.getyCoordinate()].setIcon(null);
                             blocks[x][y].place(excitedPiece);
                             blocks[xLaunch][yLaunch].setTenant("empty");
-                            switch (excitedPiece.getPieceType()) {
+                        switch (excitedPiece.getPieceType().toLowerCase()) {
                                 case "pawn":
                                     pieces[x][y] = new Pawn(excitedPiece.getDescription(),x,y);
                                     break;
-                            
+                                case "rook":
+                                    pieces[x][y] = new Rook(excitedPiece.getDescription(), x, y);
+                                    break;
+                                case "knight":
+                                    pieces[x][y] = new Knight(excitedPiece.getDescription(), x, y);
+                                    break;
+                                case "bishop":
+                                    pieces[x][y] = new Bishop(excitedPiece.getDescription(), x, y);
+                                    break;
+                                case "queen":
+                                    pieces[x][y] = new Queen(excitedPiece.getDescription(), x, y);
+                                    break;
+                                case "king":
+                                    pieces[x][y] = new King(excitedPiece.getDescription(), x, y);
+                                    break;
                                 default:
+                                    System.out.println("Error: The result of \'excitedPiece.getPieceType().toLowerCase()\' isn't a recognised case in the Game\'s switch statement");
                                     break;
                             
                             }
@@ -231,6 +246,11 @@ public class Game {
                                 }
                             }
                             excitedPiece = p;   // Keeping track of which piece is ready to move
+
+                            for (int i = 0; i < xAffectedBlocks.size(); i++) {
+                                System.out.println("xAffected: " + xAffectedBlocks.get(i) + " --yAffecred:" + yAffectedBlocks.get(i) );
+                            }
+
                         }
                         
 
