@@ -110,7 +110,7 @@ public class Game {
         // Queen
         pieces[0][3] = new Queen("player=white",0,3);
         pieces[0][3].add(blocks[0][3], pieces[0][3].imagePath);
-        blocks[0][3].setTenant("black");
+        blocks[0][3].setTenant("white");
         pieces[7][3] = new Queen("player=black",7,3);
         pieces[7][3].add(blocks[7][3], pieces[7][3].imagePath);
         blocks[7][3].setTenant("black");

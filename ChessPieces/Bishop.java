@@ -73,6 +73,7 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate + counter][yCoordinate - counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate + counter;
                         yPossibleMoves[index] = yCoordinate - counter;
+                        index++;
                         // Forcing diagonal to be blocked after an enemy is encountered
                         if (blocks[xCoordinate + counter][yCoordinate - counter].getTenant().contains(enemy))
                             left_down_free = false;
