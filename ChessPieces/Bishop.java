@@ -45,47 +45,62 @@ public class Bishop extends Piece{
         boolean left_down_free = true;
         boolean left_up_free = true;
 
+        String enemy = "";
+        if (pieceIsWhite) 
+            enemy = "black";
+        else
+            enemy = "white";
+
         while(!exitLoop){
 
-            // Right Up Direction
+            // Right down Direction
             if (xCoordinate + counter < 8 && right_down_free){
                 if (yCoordinate + counter < 8) {
                     if ( ! blocks[xCoordinate + counter][yCoordinate + counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate + counter;
                         yPossibleMoves[index] = yCoordinate + counter;
+                        System.out.println("--------------------");
                         System.out.println("right down (x+var) (y+var)");
                         System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
+                        System.out.println("--------------------");
                         index++;
+                        if (blocks[xCoordinate + counter][yCoordinate + counter].getTenant().contains(enemy))
+                            right_down_free = false;
                     }else {
                         right_down_free = false;
                     }
                 }
             }
-            // Left Up
-            if (xCoordinate + counter < 8 && right_up_free){
+            // Left down
+            if (xCoordinate + counter < 8 && left_down_free){
                 if (yCoordinate - counter >= 0) {
                     if ( ! blocks[xCoordinate + counter][yCoordinate - counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate + counter;
                         yPossibleMoves[index] = yCoordinate - counter;
-                        System.out.println("right up (x+var) (y-var)");
+                        System.out.println("Left down (x+var) (y-var)");
                         System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
+                        // Forcing diagonal to be blocked after an enemy is encountered
+                        if (blocks[xCoordinate + counter][yCoordinate - counter].getTenant().contains(enemy))
+                            left_down_free = false;
                     }else {
-                        right_up_free = false;
+                        left_down_free = false;
                     }
                 }
             }
-            // Left Down
-            if (xCoordinate - counter >= 0 && left_down_free){
+            // Right Up
+            if (xCoordinate - counter >= 0 && right_up_free){
                 if (yCoordinate + counter < 8) {
                     if ( ! blocks[xCoordinate - counter][yCoordinate + counter].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate - counter;
                         yPossibleMoves[index] = yCoordinate + counter;
-                        System.out.println("left down (x-var) (y+var)");
+                        System.out.println("Right Up (x-var) (y+var)");
                         System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
+                        if (blocks[xCoordinate - counter][yCoordinate + counter].getTenant().contains(enemy))
+                            right_up_free = false;
                     }else {
-                        left_down_free = false;
+                        right_up_free = false;
                     }
                 }
             }
@@ -98,6 +113,8 @@ public class Bishop extends Piece{
                         System.out.println("left up (x-var) (y-var)");
                         System.out.println("i="+index + " x0="+xCoordinate + " y0="+yCoordinate +  " x="+xPossibleMoves[index] + " y="+yPossibleMoves[index] + " var="+counter);
                         index++;
+                        if (blocks[xCoordinate - counter][yCoordinate - counter].getTenant().contains(enemy))
+                            left_up_free = false;
                     }else {
                         left_up_free = false;
                     }
