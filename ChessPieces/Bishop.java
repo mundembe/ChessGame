@@ -20,6 +20,7 @@ public class Bishop extends Piece{
         int index = 0;
         boolean exitLoop = false;
         int loopControl = 0;
+        System.out.println("ActionProcessor called in Bishop.");
 
         // for(int i = -7; i < 8; i++){
         //     if(xCoordinate + i >= 0 && xCoordinate + i < 8){
@@ -55,27 +56,31 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate + right_down][yCoordinate + right_down].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate + right_down;
                         yPossibleMoves[index] = yCoordinate + right_down;
-                        System.out.println("still in here");
+                        System.out.println("right down - still in here");
                     }else {
                         right_down_free = false;
-                        System.out.println("blocked");
+                        System.out.println("right down blocked");
                     }
                 }
                 right_down++;
             }
             // Right Up
             if (xCoordinate + right_up < 8 && right_up_free){
+                System.out.println("right Up Entered");
                 if (yCoordinate - right_up >= 0) {
                     if ( ! blocks[xCoordinate + right_up][yCoordinate - right_up].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate + right_up;
                         yPossibleMoves[index] = yCoordinate - right_up;
-                        System.out.println("still in here");
+                        System.out.println("right up - still in here");
                     }else {
                         right_up_free = false;
-                        System.out.println("blocked");
+                        System.out.println("right up - blocked");
                     }
                 }
                 right_up++;
+            }else {
+                //TODO: remove
+                System.out.println("right up denied");
             }
             // Left Down
             if (xCoordinate - left_down >= 0 && left_down_free){
@@ -83,10 +88,10 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate - left_down][yCoordinate + left_down].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate - left_down;
                         yPossibleMoves[index] = yCoordinate + left_down;
-                        System.out.println("still in here");
+                        System.out.println("left down - still in here");
                     }else {
                         left_down_free = false;
-                        System.out.println("blocked");
+                        System.out.println("left down - blocked");
                     }
                 }
                 left_down++;
@@ -97,10 +102,10 @@ public class Bishop extends Piece{
                     if ( ! blocks[xCoordinate - left_up][yCoordinate - left_up].getTenant().contains(pieceColor)){
                         xPossibleMoves[index] = xCoordinate - left_up;
                         yPossibleMoves[index] = yCoordinate - left_up;
-                        System.out.println("still in here");
+                        System.out.println("left up - still in here");
                     }else {
                         left_up_free = false;
-                        System.out.println("blocked");
+                        System.out.println("left up - blocked");
                     }
                 }
                 left_up++;

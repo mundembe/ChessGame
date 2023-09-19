@@ -80,6 +80,7 @@ public class Piece {
     
     public void actionProcessor(Square[][] blocks){
         showPossibleMoves(blocks);
+        System.out.println("Button pressed");
         
     }
 

@@ -143,7 +143,7 @@ public class Game {
         blocks[7][1].setTenant("black");
         pieces[7][6] = new Knight("player=black",7,6);
         pieces[7][6].add(blocks[7][6], pieces[7][6].imagePath);
-        blocks[0][4].setTenant("black");
+        blocks[7][6].setTenant("black");
        
         // White Bishop
         pieces[0][2] = new Bishop("player=white",0,2);
@@ -158,7 +158,7 @@ public class Game {
         blocks[7][2].setTenant("black");
         pieces[7][5] = new Bishop("player=black",7,5);
         pieces[7][5].add(blocks[7][5], pieces[7][5].imagePath);
-        blocks[7][4].setTenant("black");
+        blocks[7][5].setTenant("black");
     }
 
     public void actionProcessor(){
@@ -181,7 +181,7 @@ public class Game {
                         // Display tenants
                         for (int k = 0; k < blocks.length; k++) {
                             for (int l = 0; l < blocks.length; l++) {
-                                blocks[k][l].setText(blocks[k][l].getTenant());
+                                blocks[k][l].setText("o="+k+"i="+l);
                             }
                         }
 
