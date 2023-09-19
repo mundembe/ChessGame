@@ -30,6 +30,7 @@ public class Piece {
     public void setImagePath(String imagePath) { this.imagePath = imagePath; }
     public void setPieceType(String pieceType) { this.pieceType = pieceType; }
     public String getPieceType() { return this.pieceType; }
+    public String getPieceColor() { return this.pieceColor; }
     public void setPieceColor(String pieceColor) { this.pieceColor = pieceColor; }
     public void setReadyForMove(boolean readyForMove) { this.readyForMove = readyForMove; }
     public String getDescription() { return description; }

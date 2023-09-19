@@ -64,6 +64,20 @@ public class Knight extends Piece{
                 yPossibleMoves[7] = yCoordinate - 2;
             }
         }
+
+
+        // Handle Collisions
+        for (int i = 0; i < xPossibleMoves.length; i++) {
+            try {
+                System.out.println("Block Color: " + blocks[xPossibleMoves[i]][yPossibleMoves[i]].getTenant());
+                if (blocks[xPossibleMoves[i]][yPossibleMoves[i]].getTenant().contains(this.getPieceColor())) {
+                    System.out.println("Piece Color: " + this.getPieceColor());
+                    xPossibleMoves[i] = -1;
+                    yPossibleMoves[i] = -1;
+                }
+            } catch(Exception e){
+            }
+        }
         
     }
 
