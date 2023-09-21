@@ -44,12 +44,6 @@ public class Bishop extends Piece{
         boolean left_down_free = true;
         boolean left_up_free = true;
 
-        String enemy = "";
-        if (pieceIsWhite) 
-            enemy = "black";
-        else
-            enemy = "white";
-
         while(!exitLoop){
 
             // Right down Direction

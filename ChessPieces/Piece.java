@@ -19,6 +19,7 @@ public class Piece {
     public int xPossibleMoves[] = new int[16];
     public int yPossibleMoves[] = new int[16];
     boolean readyForMove;
+    public String enemy = "";
 
     public String getImagePath() { return this.imagePath; }
     public void setXCoordinate(int xCoordinate) { this.xCoordinate = xCoordinate; }
@@ -51,6 +52,12 @@ public class Piece {
             xPossibleMoves[i] = -1;
             yPossibleMoves[i] = -1;
         }
+
+        
+        if (pieceIsWhite) 
+            enemy = "black";
+        else
+            enemy = "white";
     }
 
     // Sets the Image Icon to a square
