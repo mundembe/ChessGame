@@ -30,9 +30,11 @@ public class Square extends JButton{
     }
     public Color getBlockColor() { return this.blockColor; }
 
-    public void place(Piece captor){
+    public boolean place(Piece captor, boolean whitesMove){
         this.setTenant(captor.description);
         captor.add(this, captor.getImagePath());
+        return whitesMove = !whitesMove;
+        // TODO: if not working, separate return and assignment
     }
     
 

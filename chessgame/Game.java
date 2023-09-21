@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.swing.*;
 
@@ -31,6 +32,8 @@ public class Game {
     public ArrayList<Integer> yAffectedBlocks = new ArrayList<Integer>();
     public int xLaunch;
     public int yLaunch;
+    public boolean whitesMove = true;
+    public Color highlightColor = Color.yellow;
 
     public Game() {
         createWindow();
@@ -197,13 +200,12 @@ public class Game {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         Piece p = pieces[x][y]; // Launching action processor for each piece
-                        System.out.println("Im also human");
 
                         // Move a piece
-                        if (blocks[x][y].getReadyForMove()) {
+                        if (blocks[x][y].getReadyForMove() && !Objects.isNull(excitedPiece) && excitedPiece.pieceIsWhite==whitesMove) {
 
                             blocks[excitedPiece.getxCoordinate()][excitedPiece.getyCoordinate()].setIcon(null);
-                            blocks[x][y].place(excitedPiece);
+                            whitesMove = blocks[x][y].place(excitedPiece, whitesMove);
                             blocks[xLaunch][yLaunch].setTenant("empty");
                             switch (excitedPiece.getPieceType().toLowerCase()) {
                                 case "pawn":
@@ -211,7 +213,6 @@ public class Game {
                                     break;
                                 case "rook":
                                     pieces[x][y] = new Rook(excitedPiece.getDescription(), x, y);
-                                    System.out.println("Yep Its me!");
                                     break;
                                 case "knight":
                                     pieces[x][y] = new Knight(excitedPiece.getDescription(), x, y);
@@ -231,17 +232,28 @@ public class Game {
                                     break;
 
                             }
-                            System.out.println("destroy x="+excitedPiece.getxCoordinate() + "    y=" +excitedPiece.getyCoordinate());
-                            pieces[excitedPiece.getxCoordinate()][excitedPiece.getyCoordinate()] = null; // destroying
-                                                                                                         // the piece
+                            pieces[excitedPiece.getxCoordinate()][excitedPiece.getyCoordinate()] = null; // destroying the piece
 
                             refresh();
 
-                        } else if (!(blocks[x][y].getTenant().equals("empty"))) {
+                        } 
+                        
+                        // Show Possible moves
+                        else if (!(blocks[x][y].getTenant().equals("empty"))) {
                             refresh();
                             xLaunch = x;
                             yLaunch = y;
                             p.actionProcessor(blocks);
+
+                            try {
+                                if (whitesMove == p.pieceIsWhite)
+                                    highlightColor = Color.yellow;
+                                else 
+                                    highlightColor = Color.cyan;
+
+                            } catch (NullPointerException NullPointerException) {
+                                System.out.println("Failed");
+                            }
                             // Highlight the Possible Moves
                             for (int k = 0; k < 16; k++) {
                                 try {
@@ -249,17 +261,12 @@ public class Game {
                                         xAffectedBlocks.add(p.xPossibleMoves[k]);
                                         yAffectedBlocks.add(p.yPossibleMoves[k]);
                                     }
-                                    blocks[p.xPossibleMoves[k]][p.yPossibleMoves[k]].setBackground(Color.YELLOW);
+                                    blocks[p.xPossibleMoves[k]][p.yPossibleMoves[k]].setBackground(highlightColor);
                                     blocks[p.xPossibleMoves[k]][p.yPossibleMoves[k]].setReadyForMove(true);
                                 } catch (Exception exception) {
                                 }
                             }
                             excitedPiece = p; // Keeping track of which piece is ready to move
-
-                            for (int i = 0; i < xAffectedBlocks.size(); i++) {
-                                System.out.println("xAffected: " + xAffectedBlocks.get(i) + " --yAffecred:"
-                                        + yAffectedBlocks.get(i));
-                            }
 
                         }
                     }
