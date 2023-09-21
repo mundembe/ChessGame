@@ -16,8 +16,8 @@ public class Piece {
     public String pieceColor = "white";
     public int xCoordinate;
     public int yCoordinate;
-    public int xPossibleMoves[] = new int[16];
-    public int yPossibleMoves[] = new int[16];
+    public int xPossibleMoves[] = new int[32];
+    public int yPossibleMoves[] = new int[32];
     boolean readyForMove;
     public String enemy = "";
 

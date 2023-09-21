@@ -1,7 +1,5 @@
 package ChessPieces;
 
-import javax.swing.JButton;
-
 import chessgame.Square;
 
 public class Knight extends Piece{
